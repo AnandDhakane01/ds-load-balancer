@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  Server1:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0f5ee92e2d63afc18
+      KeyName: ds-project-key-pair 
+  Server2:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0f5ee92e2d63afc18 
+      KeyName: ds-project-key-pair 
+  loadBalancer:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0f5ee92e2d63afc18 
+      KeyName: ds-project-key-pair 
+Outputs:
+  EC2Instance1PublicIP:
+    Value: !GetAtt Server1.PublicIp
+  EC2Instance2PublicIP:
+    Value: !GetAtt Server1.PublicIp 
+
+
+
+

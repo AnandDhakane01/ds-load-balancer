@@ -1,0 +1,25 @@
+upstream backend {
+        server ec2-15-206-172-24.ap-south-1.compute.amazonaws.com;
+        server ec2-15-206-170-238.ap-south-1.compute.amazonaws.com;
+    }
+
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+
+        root /var/www/html;
+
+        # add index.php to the list if you are using php
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                # first attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                proxy_pass http://backend;
+        }
+
+}
+
